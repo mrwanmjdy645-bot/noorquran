@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#103b30">
+  <meta name="description" content="نور القرآن - القرآن الكريم والاستماع للقرّاء ومواقيت الصلاة والأذكار">
+  <title>نور القرآن | القرآن الكريم ومواقيت الصلاة</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="نور القرآن - الرئيسية"><span class="brand-mark">۞</span><span>نور القرآن<small>رفيقك إلى الطمأنينة</small></span></a>
+    <nav class="main-nav">
+      <a href="#quran">القرآن الكريم</a><a href="#prayer">مواقيت الصلاة</a><a href="#adhkar">الأذكار</a>
+    </nav>
+    <button class="icon-btn" id="themeBtn" aria-label="تبديل الوضع الليلي">☾</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-pattern"></div>
+      <div class="hero-content">
+        <span class="eyebrow">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</span>
+        <h1>نورٌ يضيء <em>قلبك</em></h1>
+        <p>اقرأ القرآن الكريم، واستمع إلى تلاوات القرّاء، وتابع مواقيت الصلاة أينما كنت.</p>
+        <div class="hero-actions"><a class="primary-btn" href="#quran">ابدأ القراءة <span>←</span></a><a class="outline-btn" href="#prayer">مواقيت الصلاة</a></div>
+      </div>
+      <div class="hero-art" aria-hidden="true"><div class="arch"><div class="arch-inner"><span>﷽</span><b>وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا</b><small>سورة المزمل · ٤</small></div></div></div>
+    </section>
+
+    <section class="prayer-section section" id="prayer">
+      <div class="section-heading"><div><span class="eyebrow dark-eyebrow">على مدار يومك</span><h2>مواقيت الصلاة</h2></div><div class="location-control"><span>📍</span><select id="citySelect" aria-label="اختر المدينة"><option value="auto">تحديد موقعي تلقائياً</option><option value="Madinah,Saudi Arabia">المدينة المنورة</option><option value="Makkah,Saudi Arabia">مكة المكرمة</option><option value="Riyadh,Saudi Arabia">الرياض</option><option value="Jeddah,Saudi Arabia">جدة</option><option value="Dammam,Saudi Arabia">الدمام</option><option value="Abha,Saudi Arabia">أبها</option><option value="Tabuk,Saudi Arabia">تبوك</option></select><button id="locateBtn" class="small-btn">تحديث الموقع</button></div></div>
+      <div class="prayer-meta"><strong id="locationName">جارٍ تحديد المدينة...</strong><span id="hijriDate">جارٍ تحميل التاريخ الهجري...</span><span id="gregDate"></span></div>
+      <div class="prayer-grid" id="prayerGrid"><div class="loading">جارٍ تحميل مواقيت الصلاة...</div></div>
+      <p class="note">المواقيت تُجلب حسب موقعك أو المدينة المختارة. قد تختلف دقائق بسيطة حسب طريقة الحساب المعتمدة محلياً.</p>
+    </section>
+
+    <section class="section quran-section" id="quran">
+      <div class="section-heading"><div><span class="eyebrow dark-eyebrow">تلاوة وتدبّر</span><h2>القرآن الكريم</h2><p class="section-subtitle">اختر سورة لعرض آياتها والاستماع إلى تلاوتها.</p></div><div class="quran-tools"><input id="searchSurah" type="search" placeholder="ابحث عن سورة..." aria-label="ابحث عن سورة"><select id="reciterSelect" aria-label="اختر القارئ"><option value="ar.alafasy">مشاري العفاسي</option></select></div></div>
+      <div class="quran-layout">
+        <aside class="surah-panel"><div class="panel-title">السور <span id="surahCount">114 سورة</span></div><div id="surahList" class="surah-list"><div class="loading">جارٍ تحميل السور...</div></div></aside>
+        <article class="reader-panel">
+          <div class="reader-top"><div><span class="eyebrow dark-eyebrow">أنت تتلو الآن</span><h3 id="currentSurah">سورة الفاتحة</h3><p id="surahInfo">مكية · 7 آيات</p></div><button id="bookmarkBtn" class="small-btn">☆ حفظ موضع القراءة</button></div>
+          <div id="basmala" class="basmala">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+          <div id="ayahContainer" class="ayah-container"><div class="loading">جارٍ تحميل الآيات...</div></div>
+          <div class="audio-player"><div class="audio-title"><span>♫</span><div><b>استمع للتلاوة</b><small id="audioLabel">اختر قارئاً وسورة</small></div></div><audio id="audioPlayer" controls preload="none"></audio></div>
+          <p id="readerMessage" class="reader-message" aria-live="polite"></p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section adhkar-section" id="adhkar">
+      <div class="section-heading"><div><span class="eyebrow dark-eyebrow">ذكر الله يطمئن القلوب</span><h2>أذكار مختارة</h2></div></div>
+      <div class="adhkar-grid">
+        <article class="dhikr-card"><span class="dhikr-symbol">☀</span><h3>أذكار الصباح</h3><p>ابدأ يومك بذكر الله وحمده والاستعانة به.</p><button class="text-btn" data-dhikr="morning">عرض الأذكار ←</button></article>
+        <article class="dhikr-card"><span class="dhikr-symbol">☾</span><h3>أذكار المساء</h3><p>اختم يومك بالذكر والدعاء وطلب السكينة.</p><button class="text-btn" data-dhikr="evening">عرض الأذكار ←</button></article>
+        <article class="dhikr-card"><span class="dhikr-symbol">◉</span><h3>التسبيح</h3><p>سبّح الله واحمده واستغفره.</p><button class="text-btn" data-dhikr="tasbeeh">افتح المسبحة ←</button></article>
+      </div>
+      <div id="dhikrPanel" class="dhikr-panel hidden" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer><div class="footer-brand">۞ نور القرآن</div><p>اللهم اجعل القرآن ربيع قلوبنا ونور صدورنا.</p><small>يُرجى مراجعة النصوص والمصادر الشرعية المعتمدة عند النشر العام.</small></footer>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
